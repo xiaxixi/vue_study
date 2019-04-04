@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <script type="text/javascript" src="./lib/vue-2.4.0.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <counter></counter>
+            <counter></counter>
+        </div>
+
+        <template id="tmp1">
+            <div>
+                <button @click="increment()">+1</button>
+                <h3>{{count}}</h3>
+            </div>
+        </template>
+
+        <script type="text/javascript">
+
+            Vue.component('counter', {
+                template: '#tmp1',
+                data: function() {
+                    return {count: 0};
+                },
+                methods: {
+                    increment() {
+                        this.count++;
+                    }
+                }
+            })
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {},
+                methods:{}
+            });
+        </script>
+    </body>
+</html>
