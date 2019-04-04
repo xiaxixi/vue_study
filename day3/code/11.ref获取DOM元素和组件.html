@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <script type="text/javascript" src="./lib/vue-2.4.0.js"></script>
+    </head>
+    <body>
+
+        <div id="app">
+            <input type="button" value="获取元素" @click="getElement" ref="mybtn">
+            <login ref="mylogin"></login>
+        </div>
+
+        <script type="text/javascript">
+
+            var login = {
+                template: '<h1>登录组件</h1>',
+                data() {
+                    return {
+                        sonmsg: 'son msg'
+                    }
+                },
+                methods: {
+                    show() {
+                        console.log('调用了子组件的方法');
+                    }
+                }
+            }
+
+            var vm = new Vue({
+                el: '#app',
+                data: {},
+                methods: {
+                    getElement() {
+                        console.log(this.$refs.mylogin.sonmsg);
+                        this.$refs.mylogin.show();
+                    }
+                },
+                components: {
+                    login
+                }
+            });
+        </script>
+        
+    </body>
+</html>
