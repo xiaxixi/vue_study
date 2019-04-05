@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <script src="./lib/vue-2.4.0.js"></script>
+        <!-- 1. 安装 vue-router 路由模块 -->
+        <script src="./lib/vue-router-3.0.1.js"></script>
+        <style type="text/css">
+            /*或者.router-link-active*/
+            .myactive {
+                color: lightblue;
+                font-weight: bold;
+            }
+
+            .v-enter,
+            .v-leave-to {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            .v-enter-active,
+            .v-leave-active {
+                transition: all 0.5s ease;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 如果在路由中，使用 查询字符串，给路由传递参数，则 不需要修改 路由规则的 path 属性 -->
+            <!-- 传参方式一 -->
+            <router-link to="/login?id=1&name=zl">登录</router-link>
+            <!-- 传参方式二 要修改 路由规则的 path 属性 -->
+            <router-link to="/register/2/zl">注册</router-link>
+
+            <transition mode="out-in">
+                <router-view></router-view>
+            </transition>
+        </div>
+
+        <script type="text/javascript">
+
+            var login = {
+                // 获取参数一
+                template: '<h1>登录组件 传参方式一  ----{{$route.query.id}}----{{$route.query.name}}</h1>'
+            }
+
+            var register = {
+                // 获取参数二
+                template: '<h1>注册组件 传参方式二 ----{{$route.params.id}}----{{$route.params.name}}</h1>'
+            }
+
+            var routerObj = new VueRouter({
+                routes: [
+                    {path: '/', redirect: '/login'},
+                    {path: '/login', component: login},
+                    // 传参方式二
+                    {path: '/register/:id/:name', component: register}
+                ],
+                linkActiveClass: 'myactive'
+            })
+
+            var vm = new Vue({
+                el: '#app',
+                data: {},
+                methods: {},
+                router: routerObj
+            })
+        </script>
+    </body>
+</html>
