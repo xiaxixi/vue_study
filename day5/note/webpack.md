@@ -4,7 +4,7 @@
 
 
 
-![](../images/1554634457031.png)
+![Image text](../images/1554634457031.png)
 
 ###### 1、npm init -y
 
