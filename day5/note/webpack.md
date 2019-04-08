@@ -4,7 +4,7 @@
 
 
 
-![1554634457031](https:\\github.com\xiaxixi\vue_study\blob\master\day5\images\1554634457031.png)
+![1554634457031](https://github.com/xiaxixi/vue_study/blob/master/day5/images/1554634457031.png)
 
 ###### 1、npm init -y
 
